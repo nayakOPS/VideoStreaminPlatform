@@ -15,14 +15,14 @@ const uploadOnCloudinary = async (localFilePath) => {
             resource_type:"auto"
         }) 
         // if file uploaded successfully via localFilePath
-        console.log("File Has Been Uploaded Successfully", uploadedResponse.url);
+        // console.log("File Has Been Uploaded Successfully", uploadedResponse.url);
+        fs.unlinkSync(localFilePath)
         return uploadedResponse;
     }catch(error){
         // removing the temp file from local server after the file have been uploaded to cloudinary
         fs.unlinkSync(localFilePath)
         //remove the locally saved temporary file as the upload opeartion got failed
         return null;
-
     }
 }
 
